@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.9.0 on win32)" generated="2025-03-30T21:04:31.204242" rpa="false" schemaversion="5">
+<suite id="s1" name="ApiTest" source="C:\nettisivu\altzone new\ApiTest">
+<suite id="s1-s1" name="Tests" source="C:\nettisivu\altzone new\ApiTest\tests">
+<suite id="s1-s1-s1" name="clanTests" source="C:\nettisivu\altzone new\ApiTest\tests\clanTests.robot">
+<kw name="Create Random Profile" owner="resources" type="SETUP">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-03-30T21:04:31.399420" level="INFO">${random_suffix} = 34482</msg>
+<var>${random_suffix}</var>
+<arg>5</arg>
+<arg>[NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.398419" elapsed="0.001001"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.400421" level="INFO">${random_user} = user34482</msg>
+<var>${random_user}</var>
+<arg>user${random_suffix}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.399420" elapsed="0.001001"/>
+</kw>
+<kw name="Create Profile" owner="resources">
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.401422" level="INFO">${battle_ids} = ['60c72b2f5f1b2c001c8e4d60', '60c72b2f5f1b2c001c8e4d61']</msg>
+<var>${battle_ids}</var>
+<arg>60c72b2f5f1b2c001c8e4d60</arg>
+<arg>60c72b2f5f1b2c001c8e4d61</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.401422" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.402423" level="INFO">${avatarId} = 101</msg>
+<var>${avatarId}</var>
+<arg>101</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.401422" elapsed="0.001001"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.403423" level="INFO">${backpackCapacity} = 50</msg>
+<var>${backpackCapacity}</var>
+<arg>50</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.402423" elapsed="0.001000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.404425" level="INFO">${player} = {'name': 'user34482', 'backpackCapacity': 50, 'uniqueIdentifier': 'user34482', 'above13': True, 'parentalAuth': False, 'battleCharacter_ids': ['60c72b2f5f1b2c001c8e4d60', '60c72b2f5f1b2c001c8e4d61'], ...</msg>
+<var>${player}</var>
+<arg>name=${player_name}</arg>
+<arg>backpackCapacity=${backpackCapacity}</arg>
+<arg>uniqueIdentifier=${unique_id}</arg>
+<arg>above13=${above13}</arg>
+<arg>parentalAuth=${parentalAuth}</arg>
+<arg>battleCharacter_ids=${battle_ids}</arg>
+<arg>currentAvatarId=${avatarId}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.403423" elapsed="0.001002"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.405426" level="INFO">${body} = {'username': 'user34482', 'password': 'my_password', 'Player': {'name': 'user34482', 'backpackCapacity': 50, 'uniqueIdentifier': 'user34482', 'above13': True, 'parentalAuth': False, 'battleCharacter_i...</msg>
+<var>${body}</var>
+<arg>username=${username}</arg>
+<arg>password=${password}</arg>
+<arg>Player=${player}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.404425" elapsed="0.001001"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-03-30T21:04:31.557564" level="INFO">POST Request : url=https://altzone.fi/api/profile 
+ path_url=/api/profile 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '287', 'Content-Type': 'application/json'} 
+ body=b'{"username": "user34482", "password": "my_password", "Player": {"name": "user34482", "backpackCapacity": 50, "uniqueIdentifier": "user34482", "above13": true, "parentalAuth": false, "battleCharacter_ids": ["60c72b2f5f1b2c001c8e4d60", "60c72b2f5f1b2c001c8e4d61"], "currentAvatarId": 101}}' 
+ </msg>
+<msg time="2025-03-30T21:04:31.558565" level="INFO">POST Response : url=https://altzone.fi/api/profile 
+ status=201, reason=Created 
+ headers={'Server': 'nginx/1.26.2', 'Date': 'Sun, 30 Mar 2025 18:04:31 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '573', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"23d-pP6ct6gByTVaF+LmSd1HwmvFuLI"'} 
+ body={"data":{"Profile":{"objectType":"ProfileDto","_id":"67e987af3c66adb214976f22","username":"user34482","Player":{"objectType":"PlayerDto","_id":"67e987af3c66adb214976f24","name":"user34482","points":0,"backpackCapacity":50,"uniqueIdentifier":"user34482","above13":true,"parentalAuth":false,"gameStatistics":{"objectType":"GameStatisticsDto"},"battleCharacter_ids":["60c72b2f5f1b2c001c8e4d60","60c72b2f5f1b2c001c8e4d61"],"currentAvatarId":101,"profile_id":"67e987af3c66adb214976f22"}}},"metaData":{"dataKey":"Profile","modelName":"Profile","dataType":"Object","dataCount":1}} 
+ </msg>
+<msg time="2025-03-30T21:04:31.558565" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${API_URL}/profile</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.405426" elapsed="0.153139"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.559566" level="INFO">{'data': {'Profile': {'objectType': 'ProfileDto', '_id': '67e987af3c66adb214976f22', 'username': 'user34482', 'Player': {'objectType': 'PlayerDto', '_id': '67e987af3c66adb214976f24', 'name': 'user34482', 'points': 0, 'backpackCapacity': 50, 'uniqueIdentifier': 'user34482', 'above13': True, 'parentalAuth': False, 'gameStatistics': {'objectType': 'GameStatisticsDto'}, 'battleCharacter_ids': ['60c72b2f5f1b2c001c8e4d60', '60c72b2f5f1b2c001c8e4d61'], 'currentAvatarId': 101, 'profile_id': '67e987af3c66adb214976f22'}}}, 'metaData': {'dataKey': 'Profile', 'modelName': 'Profile', 'dataType': 'Object', 'dataCount': 1}}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.559566" elapsed="0.001001"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.560567" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.560567" elapsed="0.001001"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.561568" level="INFO">${username} = user34482</msg>
+<arg>${username}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.561568" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.562569" level="INFO">${password} = my_password</msg>
+<arg>${password}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.562569" elapsed="0.000000"/>
+</kw>
+<kw name="Get accessToken" owner="resources">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.563570" level="INFO">${body} = {'username': 'user34482', 'password': 'my_password'}</msg>
+<var>${body}</var>
+<arg>username=${username}</arg>
+<arg>password=${password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.563570" elapsed="0.000000"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-03-30T21:04:31.703697" level="INFO">POST Request : url=https://altzone.fi/api/auth/signIn 
+ path_url=/api/auth/signIn 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '52', 'Content-Type': 'application/json'} 
+ body=b'{"username": "user34482", "password": "my_password"}' 
+ </msg>
+<msg time="2025-03-30T21:04:31.703697" level="INFO">POST Response : url=https://altzone.fi/api/auth/signIn 
+ status=201, reason=Created 
+ headers={'Server': 'nginx/1.26.2', 'Date': 'Sun, 30 Mar 2025 18:04:31 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '755', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"2f3-PBh5KVngPdSNMrsvqyIMQzLBguQ"'} 
+ body={"objectType":"ProfileDto","_id":"67e987af3c66adb214976f22","username":"user34482","__v":0,"Player":{"objectType":"PlayerDto","_id":"67e987af3c66adb214976f24","name":"user34482","backpackCapacity":50,"points":0,"uniqueIdentifier":"user34482","above13":true,"parentalAuth":false,"currentAvatarId":101,"profile_id":"67e987af3c66adb214976f22","battleCharacter_ids":["60c72b2f5f1b2c001c8e4d60","60c72b2f5f1b2c001c8e4d61"],"__v":0,"gameStatistics":{"objectType":"GameStatisticsDto"}},"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_iiqM331ONA6-x2iMOFoGAgHVjNbyDPpAs","tokenExpires":1745949871} 
+ </msg>
+<msg time="2025-03-30T21:04:31.703697" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${API_URL}/auth/signIn</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.564571" elapsed="0.140127"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.704698" level="INFO">{'objectType': 'ProfileDto', '_id': '67e987af3c66adb214976f22', 'username': 'user34482', '__v': 0, 'Player': {'objectType': 'PlayerDto', '_id': '67e987af3c66adb214976f24', 'name': 'user34482', 'backpackCapacity': 50, 'points': 0, 'uniqueIdentifier': 'user34482', 'above13': True, 'parentalAuth': False, 'currentAvatarId': 101, 'profile_id': '67e987af3c66adb214976f22', 'battleCharacter_ids': ['60c72b2f5f1b2c001c8e4d60', '60c72b2f5f1b2c001c8e4d61'], '__v': 0, 'gameStatistics': {'objectType': 'GameStatisticsDto'}}, 'accessToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_iiqM331ONA6-x2iMOFoGAgHVjNbyDPpAs', 'tokenExpires': 1745949871}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.704698" elapsed="0.001001"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-03-30T21:04:31.724715" level="INFO">${token_obj} = ['eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Z...</msg>
+<var>${token_obj}</var>
+<arg>${response.json()}</arg>
+<arg>accessToken</arg>
+<arg>fail_on_empty=True</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-03-30T21:04:31.705699" elapsed="0.020018"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.725717" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.725717" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.726718" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_iiqM331ONA6-x2iMOFoGAgHVjNbyDPpAs</msg>
+<arg>${token_obj}[0]</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.726718" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.727719" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_...</msg>
+<var>${token}</var>
+<arg>${token_obj}[0]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.726718" elapsed="0.001001"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2025-03-30T21:04:31.727719" elapsed="0.000000"/>
+</return>
+<msg time="2025-03-30T21:04:31.727719" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_...</msg>
+<var>${token}</var>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2025-03-30T21:04:31.562569" elapsed="0.166151"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.728720" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_...</msg>
+<arg>${token}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.728720" elapsed="0.000000"/>
+</kw>
+<kw name="Get Profile Id" owner="resources">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.729721" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2Z...</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.729721" elapsed="0.000000"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-03-30T21:04:31.835816" level="INFO">GET Request : url=https://altzone.fi/api/profile/info 
+ path_url=/api/profile/info 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_iiqM331ONA6-x2iMOFoGAgHVjNbyDPpAs'} 
+ body=None 
+ </msg>
+<msg time="2025-03-30T21:04:31.835816" level="INFO">GET Response : url=https://altzone.fi/api/profile/info 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.26.2', 'Date': 'Sun, 30 Mar 2025 18:04:31 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '573', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"23d-pP6ct6gByTVaF+LmSd1HwmvFuLI"'} 
+ body={"data":{"Profile":{"objectType":"ProfileDto","_id":"67e987af3c66adb214976f22","username":"user34482","Player":{"objectType":"PlayerDto","_id":"67e987af3c66adb214976f24","name":"user34482","points":0,"backpackCapacity":50,"uniqueIdentifier":"user34482","above13":true,"parentalAuth":false,"gameStatistics":{"objectType":"GameStatisticsDto"},"battleCharacter_ids":["60c72b2f5f1b2c001c8e4d60","60c72b2f5f1b2c001c8e4d61"],"currentAvatarId":101,"profile_id":"67e987af3c66adb214976f22"}}},"metaData":{"dataKey":"Profile","modelName":"Profile","dataType":"Object","dataCount":1}} 
+ </msg>
+<msg time="2025-03-30T21:04:31.836817" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${API_URL}/profile/info</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.730722" elapsed="0.106095"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.837818" level="INFO">{'data': {'Profile': {'objectType': 'ProfileDto', '_id': '67e987af3c66adb214976f22', 'username': 'user34482', 'Player': {'objectType': 'PlayerDto', '_id': '67e987af3c66adb214976f24', 'name': 'user34482', 'points': 0, 'backpackCapacity': 50, 'uniqueIdentifier': 'user34482', 'above13': True, 'parentalAuth': False, 'gameStatistics': {'objectType': 'GameStatisticsDto'}, 'battleCharacter_ids': ['60c72b2f5f1b2c001c8e4d60', '60c72b2f5f1b2c001c8e4d61'], 'currentAvatarId': 101, 'profile_id': '67e987af3c66adb214976f22'}}}, 'metaData': {'dataKey': 'Profile', 'modelName': 'Profile', 'dataType': 'Object', 'dataCount': 1}}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.836817" elapsed="0.001001"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-03-30T21:04:31.859838" level="INFO">${profile_id_obj} = ['67e987af3c66adb214976f22']</msg>
+<var>${profile_id_obj}</var>
+<arg>${response.json()}</arg>
+<arg>$.data.Profile._id</arg>
+<arg>fail_on_empty=True</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-03-30T21:04:31.838819" elapsed="0.021019"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.860839" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.859838" elapsed="0.002002"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.861840" level="INFO">['67e987af3c66adb214976f22']</msg>
+<arg>${profile_id_obj}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.861840" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.862841" level="INFO">${id} = 67e987af3c66adb214976f22</msg>
+<var>${id}</var>
+<arg>${profile_id_obj}[0]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.862841" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${id}</value>
+<status status="PASS" start="2025-03-30T21:04:31.862841" elapsed="0.001001"/>
+</return>
+<msg time="2025-03-30T21:04:31.863842" level="INFO">${profile_id} = 67e987af3c66adb214976f22</msg>
+<var>${profile_id}</var>
+<arg>${token}</arg>
+<status status="PASS" start="2025-03-30T21:04:31.728720" elapsed="0.135122"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.864843" level="INFO">${profile_id} = 67e987af3c66adb214976f22</msg>
+<arg>${profile_id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.863842" elapsed="0.001001"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.865843" level="INFO">67e987af3c66adb214976f22</msg>
+<arg>${profile_id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.864843" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.866845" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_iiqM331ONA6-x2iMOFoGAgHVjNbyDPpAs</msg>
+<arg>${token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.865843" elapsed="0.001002"/>
+</kw>
+<return>
+<value>${token}</value>
+<status status="PASS" start="2025-03-30T21:04:31.866845" elapsed="0.000000"/>
+</return>
+<msg time="2025-03-30T21:04:31.866845" level="INFO">${profile} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_...</msg>
+<var>${profile}</var>
+<arg>${random_user}</arg>
+<arg>my_password</arg>
+<arg>${random_user}</arg>
+<arg>${random_user}</arg>
+<status status="PASS" start="2025-03-30T21:04:31.400421" elapsed="0.466424"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.867845" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_iiqM331ONA6-x2iMOFoGAgHVjNbyDPpAs</msg>
+<arg>${profile}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.867845" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-03-30T21:04:31.397418" elapsed="0.470427"/>
+</kw>
+<test id="s1-s1-s1-t1" name="Create Clan" line="17">
+<kw name="Create Clan">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.869847" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2Z...</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.869847" elapsed="0.001001"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.871849" level="INFO">${clan_logo} = {'logoType': 'Heart', 'pieceColors': ['#FF5733', '#33FF57', '#3357FF']}</msg>
+<var>${clan_logo}</var>
+<arg>logoType=Heart</arg>
+<arg>pieceColors=${{["#FF5733", "#33FF57", "#3357FF"]}}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.870848" elapsed="0.001001"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.872850" level="INFO">${body} = {'name': 'testClan', 'isOpen': True, 'labels': ['eläinrakkaat', 'itsenäiset'], 'ageRange': 'Adults', 'goal': 'Grindaus', 'phrase': 'Adults', 'language': 'Finnish', 'tag': 'tagi', 'clanLogo': {'logoTyp...</msg>
+<var>${body}</var>
+<arg>name=testClan</arg>
+<arg>isOpen=${True}</arg>
+<arg>labels=${{["eläinrakkaat", "itsenäiset"]}}</arg>
+<arg>ageRange=Adults</arg>
+<arg>goal=Grindaus</arg>
+<arg>phrase=Adults</arg>
+<arg>language=Finnish</arg>
+<arg>tag=tagi</arg>
+<arg>clanLogo=${clan_logo}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.871849" elapsed="0.001001"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-03-30T21:04:31.969939" level="INFO">POST Request : url=https://altzone.fi/api/clan 
+ path_url=/api/clan 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_iiqM331ONA6-x2iMOFoGAgHVjNbyDPpAs', 'Content-Length': '273'} 
+ body=b'{"name": "testClan", "isOpen": true, "labels": ["el\\u00e4inrakkaat", "itsen\\u00e4iset"], "ageRange": "Adults", "goal": "Grindaus", "phrase": "Adults", "language": "Finnish", "tag": "tagi", "clanLogo": {"logoType": "Heart", "pieceColors": ["#FF5733", "#33FF57", "#3357FF"]}}' 
+ </msg>
+<msg time="2025-03-30T21:04:31.969939" level="INFO">POST Response : url=https://altzone.fi/api/clan 
+ status=409, reason=Conflict 
+ headers={'Server': 'nginx/1.26.2', 'Date': 'Sun, 30 Mar 2025 18:04:31 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '288', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"120-p4bM5/Rqi5nMIGbAx0IwMoozQRg"'} 
+ body={"errors":[{"response":"NOT_UNIQUE","status":409,"message":"Field \"name\" with value \"testClan\" already exists","name":"","reason":"NOT_UNIQUE","field":"name","value":"testClan","additional":{"key":"name","value":"testClan"},"statusCode":409,"objectType":"APIError"}],"statusCode":409} 
+ </msg>
+<msg time="2025-03-30T21:04:31.970939" level="FAIL">HTTPError: 409 Client Error: Conflict for url: https://altzone.fi/api/clan</msg>
+<var>${response}</var>
+<arg>${CLAN_URL}</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request.</doc>
+<status status="FAIL" start="2025-03-30T21:04:31.872850" elapsed="0.101093">HTTPError: 409 Client Error: Conflict for url: https://altzone.fi/api/clan</status>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-30T21:04:31.973943" elapsed="0.001002"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-03-30T21:04:31.974945" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-03-30T21:04:31.869847" elapsed="0.106097">HTTPError: 409 Client Error: Conflict for url: https://altzone.fi/api/clan</status>
+</kw>
+<timeout value="1 minute"/>
+<status status="FAIL" start="2025-03-30T21:04:31.868847" elapsed="0.108098">HTTPError: 409 Client Error: Conflict for url: https://altzone.fi/api/clan</status>
+</test>
+<kw name="Delete Profile" owner="resources" type="TEARDOWN">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.979948" level="INFO">67e987af3c66adb214976f22</msg>
+<arg>${profile_id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.979948" elapsed="0.001000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-03-30T21:04:31.980948" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2Z...</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.980948" elapsed="0.000000"/>
+</kw>
+<kw name="DELETE" owner="RequestsLibrary">
+<msg time="2025-03-30T21:04:32.067027" level="INFO">DELETE Request : url=https://altzone.fi/api/profile/67e987af3c66adb214976f22 
+ path_url=/api/profile/67e987af3c66adb214976f22 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjIyIiwicGxheWVyX2lkIjoiNjdlOTg3YWYzYzY2YWRiMjE0OTc2ZjI0IiwiaWF0IjoxNzQzMzU3ODcxLCJleHAiOjE3NDU5NDk4NzF9.XYYuXh3Za_iiqM331ONA6-x2iMOFoGAgHVjNbyDPpAs', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-03-30T21:04:32.068028" level="INFO">DELETE Response : url=https://altzone.fi/api/profile/67e987af3c66adb214976f22 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.26.2', 'Date': 'Sun, 30 Mar 2025 18:04:31 GMT', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express'} 
+ body=None 
+ </msg>
+<msg time="2025-03-30T21:04:32.068028" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${API_URL}/profile/${profile_id}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a DELETE request.</doc>
+<status status="PASS" start="2025-03-30T21:04:31.981950" elapsed="0.086078"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-30T21:04:32.069028" level="INFO">200</msg>
+<arg>${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-30T21:04:32.069028" elapsed="0.001002"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-03-30T21:04:32.070030" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-03-30T21:04:32.070030" elapsed="0.000000"/>
+</kw>
+<arg>${token}</arg>
+<arg>${profile_id}</arg>
+<status status="PASS" start="2025-03-30T21:04:31.978946" elapsed="0.092084"/>
+</kw>
+<doc>Suite to verify all clan endpoints with basic status checks.
+This suite ensures the API responds with correct status codes and functions as expected, without detailed data validation. Smoke Test</doc>
+<meta name="Version">0.1</meta>
+<status status="FAIL" start="2025-03-30T21:04:31.228264" elapsed="0.842766"/>
+</suite>
+<status status="FAIL" start="2025-03-30T21:04:31.227264" elapsed="0.845769"/>
+</suite>
+<status status="FAIL" start="2025-03-30T21:04:31.207246" elapsed="0.866786"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="ApiTest" id="s1" pass="0" fail="1" skip="0">ApiTest</stat>
+<stat name="Tests" id="s1-s1" pass="0" fail="1" skip="0">ApiTest.Tests</stat>
+<stat name="clanTests" id="s1-s1-s1" pass="0" fail="1" skip="0">ApiTest.Tests.clanTests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
